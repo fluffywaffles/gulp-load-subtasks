@@ -12,7 +12,7 @@ module.exports = function (subtaskGlob, gulp) {
   })
 
   if (files.length == 0 && fs.lstatSync(subtaskGlob).isDirectory())
-    files = glob.sync(path.join(subtaskGlob, '**/*.tasks.*'))
+    files = glob.sync(path.join(subtaskGlob, '**/*.tasks.js'))
 
   files.forEach(function (f) {
     var ext  = path.extname(f)
