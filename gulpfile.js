@@ -3,9 +3,10 @@ var gulp       = require('gulp')
   , coffee     = require('coffee-script/register')
   , livescript = require('livescript')
   , sequence   = require('run-sequence')
+  , del        = require('del')
 
 gulp.task('livescript', function () {
-  return gulp.src('index.ls')
+  return gulp.src('src/livescript/index.ls')
     .pipe($.livescript({ bare: true }))
     .pipe($.rename('index.livescript.js'))
     .pipe(gulp.dest('dist'))
@@ -13,7 +14,7 @@ gulp.task('livescript', function () {
 
 
 gulp.task('coffee', function () {
-  return gulp.src('index.coffee')
+  return gulp.src('src/coffee/index.coffee')
     .pipe($.coffee({ bare: true }))
     .pipe($.rename('index.coffee.js'))
     .pipe(gulp.dest('dist'))
@@ -40,6 +41,10 @@ gulp.task('test:coffee', [ 'coffee' ], function () {
 gulp.task('test:js', function () {
   return gulp.src('tests/loader.spec.js')
     .pipe($.mocha())
+})
+
+gulp.task('clean', function () {
+  return del('dist')
 })
 
 gulp.task('test', function () {
