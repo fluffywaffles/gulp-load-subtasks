@@ -1,4 +1,5 @@
 # Hullo from gulp-subtask-loader!
+[![Build Status](https://travis-ci.org/skorlir/gulp-subtask-loader.svg?branch=master)](https://travis-ci.org/skorlir/gulp-subtask-loader)
 
 ### How to install:
 ```js
