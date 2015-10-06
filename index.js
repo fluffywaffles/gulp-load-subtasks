@@ -4,7 +4,7 @@ var glob = require('glob')
   , pathEndsWith = require('path-ends-with')
 
 module.exports = function (subtaskGlob, gulp) {
-  var args  = [ gulp ].concat([].slice.call(arguments, 2))
+  var args  = [].slice.call(arguments, 1)
     , files = [ ]
 
   files = glob.sync(subtaskGlob).filter(function (f) {
