@@ -12,13 +12,13 @@ module.exports = function (subtaskGlob, gulp) {
   })
 
   if (files.length == 0 && fs.lstatSync(subtaskGlob).isDirectory())
-    files = glob.sync(path.join(subtaskGlob, '**/*.task.*'))
+    files = glob.sync(path.join(subtaskGlob, '**/*.tasks.*'))
 
   files.forEach(function (f) {
     var ext  = path.extname(f)
       , name = path.basename(f, ext)
-    if (pathEndsWith(f, '.task' + ext))
-      name = path.basename(f, '.task')
+    if (pathEndsWith(f, '.tasks' + ext))
+      name = path.basename(f, '.tasks')
     f = path.resolve(f)
     require(f).apply(null, args)
   })

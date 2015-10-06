@@ -1,6 +1,6 @@
 {
   "name": "gulp-subtask-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A globular loader for gulp subtasks",
   "main": "index.js",
   "repository": "github.com/skorlir/gulp-subtask-loader",
