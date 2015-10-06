@@ -6,7 +6,7 @@ var gulp       = require('gulp')
   , del        = require('del')
 
 gulp.task('livescript', function () {
-  return gulp.src('src/livescript/index.ls')
+  return gulp.src('livescript.ls')
     .pipe($.livescript({ bare: true }))
     .pipe($.rename('index.livescript.js'))
     .pipe(gulp.dest('dist'))
@@ -14,7 +14,7 @@ gulp.task('livescript', function () {
 
 
 gulp.task('coffee', function () {
-  return gulp.src('src/coffee/index.coffee')
+  return gulp.src('coffee.coffee')
     .pipe($.coffee({ bare: true }))
     .pipe($.rename('index.coffee.js'))
     .pipe(gulp.dest('dist'))

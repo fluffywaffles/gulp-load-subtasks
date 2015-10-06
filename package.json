@@ -2,7 +2,7 @@
   "name": "gulp-load-subtasks",
   "version": "1.0.0",
   "description": "A globular loader for gulp subtasks",
-  "main": "src",
+  "main": ".",
   "repository": {
     "type": "git",
     "url": "http://github.com/skorlir/gulp-load-subtasks"
