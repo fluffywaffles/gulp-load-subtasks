@@ -1,0 +1,26 @@
+{
+  "name": "gulp-subtask-loader",
+  "version": "1.0.0",
+  "description": "A globular loader for gulp subtasks",
+  "main": "index.js",
+  "dependencies": {
+    "glob": "^5.0.15",
+    "path-ends-with": "^0.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/skorlir/gulp-subtask-loader"
+  },
+  "keywords": [
+    "gulp",
+    "gulp-plugin",
+    "task",
+    "subtask"
+  ],
+  "author": "skorlir",
+  "license": "ISC"
+}
