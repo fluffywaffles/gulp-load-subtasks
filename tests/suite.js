@@ -14,7 +14,7 @@ module.exports = function (load) {
   })
 
   describe('gulp-subtask-loader', function () {
-    it('should expect a dir and require all .task.js files in it', function () {
+    it('should expect a dir and require all .tasks.ext files in it', function () {
       load('tests/tasks', gulpMock)
       assert.equal(gulpMock.tasks['test'], 'added task')
     })
