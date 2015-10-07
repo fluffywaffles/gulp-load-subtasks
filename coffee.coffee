@@ -11,7 +11,7 @@ module.exports = (subtaskGlob, gulp) ->
     path.extname(f) != ''
 
   if files.length is 0 and fs.lstatSync(subtaskGlob).isDirectory()
-    files = glob.sync path.join subtaskGlob, '**/*.tasks.{js,coffee}'
+    files = glob.sync path.join subtaskGlob, '**/*.tasks.coffee'
 
   for f in files
     ext  = path.extname f
