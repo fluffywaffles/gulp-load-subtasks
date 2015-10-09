@@ -28,7 +28,7 @@
   },
   "keywords": [
     "gulp",
-    "gulp-plugin",
+    "gulpplugin",
     "task",
     "subtask"
   ],
