@@ -1,7 +1,7 @@
 # Hullo from Gulp Load Subtasks!
-[![Build Status](https://travis-ci.org/skorlir/gulp-load-subtasks.svg?branch=v1.0.0)](https://travis-ci.org/skorlir/gulp-load-subtasks)
+[![Build Status](https://travis-ci.org/skorlir/gulp-load-subtasks.svg?branch=master)](https://travis-ci.org/skorlir/gulp-load-subtasks)
 
-### Why?
+### What is this and why?
 
 You know when you have a really long gulpfile how it gets to be impossible to
 keep track of all your tasks and who requires what and it's just a mess?
@@ -12,7 +12,9 @@ and build.tasks.js.
 Wouldn't that be nice?
 
 If you'd like that, you're in luck, because _that's_ that Gulp Load Subtasks
-does!
+does:
+
+:tada: **Easy, not-so-ugly, auto-loaded subtasks!** :tada:
 
 ### How to install:
 ```js
@@ -21,12 +23,10 @@ npm i --save-dev gulp-load-subtasks
 
 ### Basics
 
-In its simplest form, gulp-load-subtasks can be passed some directory (dir) and a gulp singleton and it will find all files matching 'dir\*\*/\*.tasks.js' and load those tasks. Here's that example in code:
+In its simplest form, gulp-load-subtasks can be passed some directory (dir) and it will find all files matching 'dir\*\*/\*.tasks.js' and load those tasks. Here's that example in code:
 
 ```js
-var gulp = require('gulp')
-
-require('gulp-load-subtasks')('dir', gulp)
+require('gulp-load-subtasks')('dir')
 ```
 
 You can pass optional additional arguments that will be passed on to all subtask functions,
@@ -40,16 +40,22 @@ Example using gulp-load-subtasks:
 var gulp = require('gulp')
   , $    = require('gulp-load-plugins')()
 
-$.loadSubtasks(dir, gulp)
+// pass the plugins along so that your tasks can use them
+$.loadSubtasks('dir', $)
 ```
 
 You can also use gulp-load-subtasks with CoffeeScript and LiveScript!
 
 Just change your require statement to
 
-```js
-require('gulp-load-subtasks/coffee') // for coffeescript
-require('gulp-load-subtasks/livescript') // for livescript
+```coffeescript
+# for coffeescript
+(require 'gulp-load-subtasks/coffee')('dir')
+```
+
+```livescript
+# for livescript
+(require 'gulp-load-subtasks/livescript')('dir')
 ```
 
 and it will load `dir/**/*.tasks.coffee` or `dir/**/*.tasks.ls` by default
@@ -83,10 +89,13 @@ module.exports = function (gulp) {
 _tasks/b.tasks.js_
 
 ```js
-module.exports = function (gulp, plugins) {
+module.exports = function (gulp, $) {
   gulp.task('subtaskB', function () {
     // do things... B
-    // You can use plugins!
+    // use plugins!
+    gulp.src('*.sass')
+      .pipe($.sass())
+      .pipe(gulp.dest('sassy-css-goes-here'))
   })
 }
 ```
@@ -95,28 +104,17 @@ _gulpfile.js:_
 
 ```js
 var gulp = require('gulp')
-  , plugins = require('gulp-load-plugins')()
+  , $    = require('gulp-load-plugins')()
 
-$.loadSubtasks('tasks', gulp, plugins)
+$.loadSubtasks('tasks')
 // OR path can be a glob
-$.loadSubtasks('tasks/**/*.js', gulp, plugins)
-// You can pass as many optional parameters as you want
-$.loadSubtasks('tasks', gulp, plugins, "hi mom", { a: "b" }, ...)
+$.loadSubtasks('tasks/**/*.js')
+// Pass in your plugins
+$.loadSubtasks('tasks', $)
+// Actually pass whatever you want, gulp can chug it /badpun
+$.loadSubtasks('tasks', $, "hi mom", { a: "b" }, ...)
 
 // You can now refer to the tasks defined in a.tasks.js and b.tasks.js!
 gulp.task('default', [ 'subtaskA', 'subtaskB' ])
 ```
-
-### API
-
-#### `subtaskLoader(dir, gulp[, optionalArgs...])`
-
-If dir is a directory, look in dir for files matching '\*\*/\*.tasks.js'.
-
-If using coffee, replace 'js' with 'coffee' above.
-If using livescript, replace 'js' with 'ls' above.
-
-If dir is a glob, get the files it matches (regardless of extension).
-
-Then require those files, calling them with the equivalent of `require(f).apply(null, [gulp, optionalArg1, ...])`
 

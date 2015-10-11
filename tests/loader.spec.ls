@@ -1,4 +1,4 @@
-load = require '../dist/index.livescript.js'
+load = require '../livescript'
 
 require('./suite.js')(load)
 

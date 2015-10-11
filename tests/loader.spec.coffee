@@ -1,4 +1,4 @@
-load = require '../dist/index.coffee.js'
+load = require '../coffee'
 
 require('./suite.js')(load)
 

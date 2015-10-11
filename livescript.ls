@@ -1,27 +1,12 @@
 require! {
-  glob
-  path
-  fs
-  'path-ends-with'
+  './loader-common': loader
 }
 
-module.exports = (subtaskGlob, gulp) !->
+module.exports = load-subtasks = (subtask-glob) !->
   args  = [ ...arguments ].slice 1
-  files = [  ]
 
-  files = glob.sync subtaskGlob .filter (f) ->
-    (path.extname f) is not ''
-
-  if files.length is 0 and fs.lstatSync subtaskGlob .isDirectory!
-    files = glob.sync path.join subtaskGlob, '**/*.tasks.ls'
+  files = loader.load subtask-glob
 
   for f in files
-    ext  = path.extname f
-    name = path.basename f, ext
-
-    if path-ends-with f, '.tasks' + ext
-      name = path.basename f, '.tasks'
-
-    f = path.resolve f
-    (require f)(...args)
+    (require f).apply null, [ loader.__gulp__, ...args ]
 

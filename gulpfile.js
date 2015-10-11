@@ -9,7 +9,7 @@ gulp.task('livescript', function () {
   return gulp.src('livescript.ls')
     .pipe($.livescript({ bare: true }))
     .pipe($.rename('index.livescript.js'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('.'))
 })
 
 
@@ -17,7 +17,11 @@ gulp.task('coffee', function () {
   return gulp.src('coffee.coffee')
     .pipe($.coffee({ bare: true }))
     .pipe($.rename('index.coffee.js'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('.'))
+})
+
+gulp.task('test:teardown', function () {
+  del(['index.coffee.js', 'index.livescript.js'])
 })
 
 gulp.task('test:livescript', [ 'livescript' ], function () {
@@ -43,12 +47,8 @@ gulp.task('test:js', function () {
     .pipe($.mocha())
 })
 
-gulp.task('clean', function () {
-  return del('dist')
-})
-
 gulp.task('test', function () {
-  sequence('test:js', 'test:coffee', 'test:livescript')
+  sequence('test:js', 'test:coffee', 'test:livescript', 'test:teardown')
 })
 
 gulp.task('default', [ 'test' ])
