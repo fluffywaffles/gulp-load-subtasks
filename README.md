@@ -12,7 +12,7 @@ and build.tasks.js.
 Wouldn't that be nice?
 
 If you'd like that, you're in luck, because _that's_ that Gulp Load Subtasks
-does:
+does!
 
 :tada: **Easy, not-so-ugly, auto-loaded subtasks!** :tada:
 
@@ -23,7 +23,7 @@ npm i --save-dev gulp-load-subtasks
 
 ### Basics
 
-In its simplest form, gulp-load-subtasks can be passed some directory (dir) and it will find all files matching 'dir\*\*/\*.tasks.js' and load those tasks. Here's that example in code:
+In its simplest form, gulp-load-subtasks can be passed some directory (dir) and it will find all files matching 'dir/\*\*/\*.tasks.js' and load those tasks. Here's that example in code:
 
 ```js
 require('gulp-load-subtasks')('dir')
@@ -48,12 +48,12 @@ You can also use gulp-load-subtasks with CoffeeScript and LiveScript!
 
 Just change your require statement to
 
-```coffeescript
+```coffee
 # for coffeescript
 (require 'gulp-load-subtasks/coffee')('dir')
 ```
 
-```livescript
+```ls
 # for livescript
 (require 'gulp-load-subtasks/livescript')('dir')
 ```
@@ -115,6 +115,6 @@ $.loadSubtasks('tasks', $)
 $.loadSubtasks('tasks', $, "hi mom", { a: "b" }, ...)
 
 // You can now refer to the tasks defined in a.tasks.js and b.tasks.js!
-gulp.task('default', [ 'subtaskA', 'subtaskB' ])
+gulp.task('default', [ 'subtaskA1', 'subtaskB' ])
 ```
 
