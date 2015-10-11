@@ -5,6 +5,7 @@ var glob = require('glob')
 
 function getGlobFiles (subtaskGlob) {
   return glob.sync(subtaskGlob).filter(function (f) {
+    // NOTE: ignore folders
     return path.extname(f) != ''
   })
 }
