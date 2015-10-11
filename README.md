@@ -21,6 +21,27 @@ does!
 npm i --save-dev gulp-load-subtasks
 ```
 
+### Alternatives and Comparison:
+* [gulp-hub](https://github.com/frankwallis/gulp-hub)
+  * Multiple gulpfiles, not multiple modules
+  * No globbing (?)
+  * No coffee/livescript support (?)
+  * Lets you have multiples of the same task and will run them all together
+  * **Intention**: run Gulp tasks from multiple projects at once
+* [require-dir](https://github.com/aseemk/requireDir)
+  * No globbing
+  * Requires the directory's modules into an object
+  * No coffee/livescript support  (?)
+  * **Intention**: ability to require a directory into any Node environment
+* **gulp-load-subtasks** (You are here!)
+  * Supports globbing
+  * Opinionated
+  * Fully supports coffee/livescript tasks, gulpfiles
+  * Works with and is heavily inspired by
+    [gulp-load-plugins](https://github.com/jackfranklin/gulp-load-plugins)
+  * **Intention**: ability to import sets of related tasks into any Gulp
+    environment
+
 ### Basics
 
 In its simplest form, gulp-load-subtasks can be passed some directory (dir) and it will find all files matching 'dir/\*\*/\*.tasks.js' and load those tasks. Here's that example in code:
@@ -117,4 +138,13 @@ $.loadSubtasks('tasks', $, "hi mom", { a: "b" }, ...)
 // You can now refer to the tasks defined in a.tasks.js and b.tasks.js!
 gulp.task('default', [ 'subtaskA1', 'subtaskB' ])
 ```
+
+### Possible Future Plans
+
+* multiglob support
+* loader.\_\_gulp\_\_ delegator (I know there's a name for a design pattern for
+  this, but I can't think of it - basically a fake Gulp that captures and
+  logs/processes calls to Gulp methods before passing them on, and possibly also
+  logs/processes the result before returning.)
+* integration with kilowatt [in-progress generator/cli]
 
