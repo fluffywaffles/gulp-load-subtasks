@@ -16,7 +16,7 @@
     "del": "^2.0.2",
     "gulp": "^4.0.2",
     "gulp-coffee": "^3.0.3",
-    "gulp-livescript": "^2.4.0",
+    "gulp-livescript": "^3.0.1",
     "gulp-load-plugins": "^2.0.2",
     "gulp-mocha": "^7.0.2",
     "gulp-rename": "^1.2.2",
