@@ -3,16 +3,15 @@
 
 ### What is this and why?
 
-You know when you have a really long gulpfile how it gets to be impossible to
-keep track of all your tasks and who requires what and it's just a mess?
+Do you have a long gulpfile?
 
-Imagine if you could break that up into grouped task files like test.tasks.js
-and build.tasks.js.
+Do you wish you could split it up into modules?
+
+Modules, like, grouped task files; like, test.tasks.js and build.tasks.js.
 
 Wouldn't that be nice?
 
-If you'd like that, you're in luck, because _that's_ what Gulp Load Subtasks
-does!
+If you'd like that, you're in luck! _That's_ what Gulp Load Subtasks does!
 
 :tada: **Easy, not-so-ugly, auto-loaded subtasks!** :tada:
 
@@ -138,13 +137,4 @@ $.loadSubtasks('tasks', $, "hi mom", { a: "b" }, ...)
 // You can now refer to the tasks defined in a.tasks.js and b.tasks.js!
 gulp.task('default', [ 'subtaskA1', 'subtaskB' ])
 ```
-
-### Possible Future Plans
-
-* multiglob support
-* loader.\_\_gulp\_\_ delegator (I know there's a name for a design pattern for
-  this, but I can't think of it - basically a fake Gulp that captures and
-  logs/processes calls to Gulp methods before passing them on, and possibly also
-  logs/processes the result before returning.)
-* integration with kilowatt [in-progress generator/cli]
 
