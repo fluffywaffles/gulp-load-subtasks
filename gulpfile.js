@@ -2,7 +2,6 @@ var gulp       = require('gulp')
   , $          = require('gulp-load-plugins')()
   , coffee     = require('coffee-script/register')
   , livescript = require('livescript')
-  , sequence   = require('run-sequence')
   , del        = require('del')
 
 gulp.task('livescript', function () {
@@ -20,11 +19,12 @@ gulp.task('coffee', function () {
     .pipe(gulp.dest('.'))
 })
 
-gulp.task('test:teardown', function () {
-  del(['index.coffee.js', 'index.livescript.js'])
+gulp.task('test:teardown', function (done) {
+  del([ 'index.coffee.js', 'index.livescript.js' ])
+  done()
 })
 
-gulp.task('test:livescript', [ 'livescript' ], function () {
+gulp.task('test:livescript', gulp.series([ 'livescript' ]), function () {
   return gulp.src('tests/loader.spec.ls')
     .pipe($.mocha({
       compilers: {
@@ -33,7 +33,7 @@ gulp.task('test:livescript', [ 'livescript' ], function () {
     }))
 })
 
-gulp.task('test:coffee', [ 'coffee' ], function () {
+gulp.task('test:coffee', gulp.series([ 'coffee' ]), function () {
   return gulp.src('tests/loader.spec.coffee')
     .pipe($.mocha({
       compilers: {
@@ -47,9 +47,15 @@ gulp.task('test:js', function () {
     .pipe($.mocha())
 })
 
-gulp.task('test', function () {
-  sequence('test:js', 'test:coffee', 'test:livescript', 'test:teardown')
+gulp.task('test', gulp.series([
+  'test:js',
+  'test:coffee',
+  'test:livescript',
+  'test:teardown',
+]), function (done) {
+  done()
 })
 
-gulp.task('default', [ 'test' ])
-
+gulp.task('default', gulp.series([ 'test' ]), function (done) {
+  done()
+})
