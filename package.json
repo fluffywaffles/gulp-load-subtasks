@@ -20,8 +20,7 @@
     "gulp-load-plugins": "^2.0.2",
     "gulp-mocha": "^7.0.2",
     "gulp-rename": "^1.2.2",
-    "livescript": "^1.4.0",
-    "run-sequence": "^1.1.4"
+    "livescript": "^1.4.0"
   },
   "scripts": {
     "test": "gulp"
