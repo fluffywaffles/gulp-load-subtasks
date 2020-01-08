@@ -1,5 +1,5 @@
 # Hullo from Gulp Load Subtasks!
-[![Build Status](https://travis-ci.org/fluffywaffles/gulp-load-subtasks.svg?branch=master)](https://travis-ci.org/skorlir/gulp-load-subtasks)
+[![Build Status](https://travis-ci.org/fluffywaffles/gulp-load-subtasks.svg?branch=master)](https://travis-ci.org/fluffywaffles/gulp-load-subtasks)
 
 ### What is this and why?
 
