@@ -5,7 +5,7 @@
   "main": ".",
   "repository": {
     "type": "git",
-    "url": "http://github.com/skorlir/gulp-load-subtasks"
+    "url": "http://github.com/fluffywaffles/gulp-load-subtasks"
   },
   "dependencies": {
     "glob": "^5.0.15",
@@ -32,6 +32,6 @@
     "task",
     "subtask"
   ],
-  "author": "skorlir",
+  "author": "fluffywaffles",
   "license": "ISC"
 }
